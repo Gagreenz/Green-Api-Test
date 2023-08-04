@@ -1,0 +1,19 @@
+FROM node:14
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+EXPOSE 3000
+
+COPY . .
+
+# Добавьте команду установки TypeScript глобально
+RUN npm install -g typescript
+
+# Компилируем TypeScript
+RUN tsc
+
+CMD ["node", "dist/index.js"]

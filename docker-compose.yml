@@ -1,0 +1,29 @@
+version: '3'
+services:
+  microservice1:
+    build:
+      context: ./microservice1
+      dockerfile: dockerfile
+    ports:
+      - "${MICROSERVICE1_PORT}:${MICROSERVICE1_PORT}"
+    networks:
+      - app-network
+
+  microservice2:
+    build:
+      context: ./microservice2
+      dockerfile: dockerfile
+    networks:
+      - app-network
+
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    ports:
+      - "${RABBITMQ_PORT}:${RABBITMQ_PORT}"
+      - "${RABBITMQ_MANAGEMENT_PORT}:${RABBITMQ_MANAGEMENT_PORT}"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
