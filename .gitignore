@@ -1,4 +1,7 @@
 logs
 
+microservice1/dist
+microservice2/dist
+
 microservice1/node_modules/
 microservice2/node_modules/
